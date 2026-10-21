@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Offers | Hungry Town</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+   <style>
+/* --- BASE STYLES FROM YOUR MAIN CODE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212;
+    color: #fff;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* --- NAVIGATION & LOGO FIXES --- */
+.navbar {
+    background: #000;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #222;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+    flex-wrap: nowrap; /* Forces logo and menu on one line */
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; /* Kept small for mobile safety */
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    white-space: nowrap; /* Prevents "Hungry Town" from splitting into 2 lines */
+    display: flex;
+    gap: 5px;
+    font-weight: bold;
+}
+
+.logo span { color: #c5a059; }
+
+/* Hamburger Menu Toggle */
+.menu-toggle {
+    display: block;
+    cursor: pointer;
+    color: #c5a059;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+}
+
+/* Sliding Menu Panel */
+.nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hidden off-screen */
+    width: 75%;
+    height: 100vh;
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    transition: 0.4s ease;
+    z-index: 1000;
+    list-style: none;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+}
+
+.nav-links.active { right: 0; } /* Slides in */
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: #c5a059; }
+
+.close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: #c5a059;
+    cursor: pointer;
+}
+
+/* --- OFFERS SECTION & FULL IMAGE FIX --- */
+.offers-container {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.offers-container h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #c5a059;
+    margin-bottom: 40px;
+}
+
+.offer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.offer-card {
+    background: #1e1e1e;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.offer-card:hover {
+    border-color: #c5a059;
+    transform: translateY(-5px);
+}
+
+/* FIX: This ensures the FULL image shows without being cut off */
+.offer-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 1px solid #222;
+}
+
+.offer-details {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Pushes the button to the bottom */
+}
+
+.offer-card h3 {
+    font-family: 'Playfair Display', serif;
+    color: #c5a059;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.offer-card p {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.promo-code {
+    border: 1px dashed #c5a059;
+    color: #c5a059;
+    padding: 10px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.btn-order {
+    text-align: center;
+    text-decoration: none;
+    background: #c5a059;
+    color: #000;
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-order:hover {
+    background: #e0b970;
+}
+
+/* Footer styling from your code */
+footer {
+    padding: 30px;
+    background: #000;
+    text-align: center;
+    color: #555;
+    font-size: 0.8rem;
+    border-top: 1px solid #222;
+}
+
+/* Safety for tiny screens */
+@media (max-width: 360px) {
+    .logo { font-size: 0.95rem; }
+}
+</style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">HUNGRY <span>TOWN</span></a>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <span class="close-menu" onclick="toggleMenu()">×</span>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="offers.html" style="color: #c5a059;">Offers</a></li>
+            <li><a href="order.html">Your Order</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="offers-container">
+        <h1>Special Offers</h1>
+        <p class="subtitle">Delicious deals just for you</p>
+
+        <div class="offer-grid">
+            <div class="offer-card">
+                <img src="img2%20(3).png" alt="Baisakhi Deal"  class="offer-img">
+                <div class="offer-details">
+                    <div class="discount-tag">15% OFF</div>
+                    <h3>Baisakhi Deal</h3>
+                    <p>Get a 15% discount on your first order over 500 BDT.</p>
+                    <span class="promo-code">CODE: HELLOHT</span>
+                    <a href="order.html" class="btn-order">Order Now</a>
+                </div>
+            </div>
+
+            <div class="offer-card">
+                <img src="img2%20(1).png" alt="Baisakhi Feast" class="offer-img">
+                <div class="offer-details">
+                    <div class="discount-tag">FREE ITEM</div>
+                    <h3>Baisakhi Feast</h3>
+                    <p>Order 4 main courses and get a Large Beverage absolutely free!</p>
+                    <span class="promo-code">CODE: FAMILYFREE</span>
+                    <a href="order.html" class="btn-order">Order Now</a>
+                </div>
+            </div>
+
+            <div class="offer-card">
+                <img src="img2%20(4).png" alt="Baisakhi Offer" class="offer-img">
+                <div class="offer-details">
+                    <div class="discount-tag">BOGO</div>
+                    <h3>Burger Monday</h3>
+                    <p>Buy one Gourmet Burger and get the second one at 50% off.</p>
+                    <span class="promo-code">CODE: BURGER50</span>
+                    <a href="order.html" class="btn-order">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

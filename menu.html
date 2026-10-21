@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Hungry Town Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        .menu-page-header { padding: 120px 10% 40px; text-align: center; }
+        .menu-page-header h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: #c5a059; margin-bottom: 5px;}
+        .menu-page-header p { color: #888; font-size: 1rem; }
+        .food-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; padding: 0 10% 80px; }
+        .food-category { background: #1e1e1e; padding: 25px; border-radius: 8px; border: 1px solid #333; transition: 0.3s; height: 100%;}
+        .food-category:hover { border-color: #c5a059; transform: translateY(-3px);}
+        .food-category h2 { color: #c5a059; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; font-family: 'Playfair Display', serif; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 1px;}
+        .food-item { display: flex; flex-direction: column; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #2a2a2a;}
+        .food-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0;}
+        .item-main { display: flex; justify-content: space-between; align-items: baseline; gap: 10px;}
+        .food-name { color: #fff; font-size: 1rem; font-weight: 400;}
+        .food-price { color: #c5a059; font-weight: 600; font-size: 1rem; white-space: nowrap;}
+        .food-desc { color: #888; font-size: 0.8rem; margin-top: 4px; line-height: 1.4;}
+
+        .size-header { display: flex; justify-content: flex-end; gap: 15px; color: #c5a059; font-size: 0.7rem; font-weight: bold; margin-bottom: 10px; text-transform: uppercase;}
+        .size-prices { display: flex; gap: 15px; }
+        .size-price { color: #c5a059; font-weight: 600; font-size: 0.9rem; min-width: 45px; text-align: right;}
+
+        body { padding-top: 0; }
+        .navbar { background: #000; }
+    </style>
+</head>
+<body>
+
+   <style>
+    /* Navigation Bar */
+    .navbar {
+        background: #000;
+        padding: 15px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #222;
+        position: sticky;
+        top: 0;
+        z-index: 1001;
+    }
+
+    .logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.2rem;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Hamburger / Collapse Icon */
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        color: #c5a059;
+        font-size: 1.8rem;
+        background: none;
+        border: none;
+    }
+
+    /* Sliding Menu Panel */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Hidden by default */
+        width: 70%;
+        height: 100vh;
+        background: #111;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: 0.4s ease;
+        z-index: 1000;
+        list-style: none;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+    }
+
+    .nav-links.active { right: 0; } /* Show menu */
+
+    .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-family: 'Poppins', sans-serif;
+        text-transform: uppercase;
+    }
+
+    .nav-links a:hover { color: #c5a059; }
+
+    /* Close Button inside menu */
+    .close-menu {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+        color: #c5a059;
+        cursor: pointer;
+    }
+
+    /* Fix background overlap */
+    html, body { overflow-x: hidden; width: 100%; margin: 0; }
+</style>
+
+  <nav class="navbar">
+        <a href="index.html" class="logo">HUNGRY <span>TOWN</span></a>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <span class="close-menu" onclick="toggleMenu()">×</span>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="offers.html" style="color: #c5a059;">Offers</a></li>
+            <li><a href="order.html">Your Order</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+<script>
+    function toggleMenu() {
+        const navLinks = document.getElementById('navLinks');
+        navLinks.classList.toggle('active');
+    }
+</script>
+
+    <div class="menu-page-header">
+        <h1>Our Menu</h1>
+        <p>A fusion of flavors: Indian • Bangla • Chinese • Fast Food</p>
+    </div>
+
+    <section class="food-grid">
+        <div class="food-category">
+            <h2>APPETIZER</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">1. Wonthon (6 pcs)</span><span class="food-price">৳200</span></div>
+            </div>
+             <div class="food-item">
+                <div class="item-main"><span class="food-name">2. Special Wonthon (8 pcs)</span><span class="food-price">৳300</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">3. French Fry</span><span class="food-price">৳300</span></div>
+            </div>
+             <div class="food-item">
+                <div class="item-main"><span class="food-name">4. Potato Wedges (8 pcs)</span><span class="food-price">৳130</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>WINGS</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">5. Hot wings</span><span class="food-price">৳280</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">6. BBQ Wings</span><span class="food-price">৳300</span></div>
+            </div>
+             <div class="food-item">
+                <div class="item-main"><span class="food-name">7. Naga Extreme Wings</span><span class="food-price">৳270</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>NACHOS</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">8. Chicken Nachos</span><span class="food-price">৳200</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">9. Chicken Cheese Nachos</span><span class="food-price">৳230</span></div>
+            </div>
+             <div class="food-item">
+                <div class="item-main"><span class="food-name">10. BBQ Chicken Nachos</span><span class="food-price">৳250</span></div>
+            </div>
+             <div class="food-item">
+                <div class="item-main"><span class="food-name">11. Tower Nachos Special</span><span class="food-price">৳320</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>MEAT BOX</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">12. Naga Spicy Meat Box</span><span class="food-price">৳270</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">13. Meat Box</span><span class="food-price">৳250</span></div>
+            </div>
+             <div class="food-item">
+                <div class="item-main"><span class="food-name">14. Special Chicken Cheese Box</span><span class="food-price">৳300</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>FAVOURITE SNACKS</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">15. Chicken Cheese Bowl</span><span class="food-price">৳300</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">16. Chicken Popcorn</span><span class="food-price">৳230</span></div>
+            </div>
+             <div class="food-item">
+                <div class="item-main"><span class="food-name">17. BBQ Chicken (2 pcs)</span><span class="food-price">৳220</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">18. Thai Fry Chicken</span><span class="food-price">৳100</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">19. Crispy Fry Chicken (1 pcs)</span><span class="food-price">৳120</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">20. Strip Chicken (6 pcs)</span><span class="food-price">৳250</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>CHICKEN</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">21. Thai Fried Chicken (6 pcs)</span><span class="food-price">400 TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">22. Hot & Spicy Fried Chicken (6 pcs)</span><span class="food-price">450 TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">23. Naga Extreme Fried Chicken (6 pcs)</span><span class="food-price">480 TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">24. Thai Fried Chicken (8 pcs)</span><span class="food-price">580 TK</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>BURGER</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">25. Chicken Burger</span><span class="food-price">150 TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">26. Chicken Cheese Burger</span><span class="food-price">180 TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">27. BBQ Chicken Cheese Burger</span><span class="food-price">200 TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">28. Mexican Burger</span><span class="food-price">150 TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">29. Double Decker Burger</span><span class="food-price">250 TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">30. Beef Cheese Burger</span><span class="food-price">220 TK</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>SANDWICH</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">31. Chicken Sub Sandwich</span><span class="food-price">180 TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">32. BBQ Chicken Sub Sandwich</span><span class="food-price">220 TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">33. Grill Sandwich</span><span class="food-price">160 TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">34. Club Sandwich</span><span class="food-price">200 TK</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>PASTA</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">35. Pasta Basta</span><span class="food-price">300 TK</span></div>
+                <div class="food-desc">(Mushroom + Chicken Breast + Garlic + Cheese)</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">36. White Creamy Pasta</span><span class="food-price">280 TK</span></div>
+                <div class="food-desc">(Pasta with White Cream + Mushroom + Capsicum)</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">37. Naga Pasta</span><span class="food-price">300 TK</span></div>
+                <div class="food-desc">(Spicy Chicken + Naga Sauce + Other Ingredients)</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">38. Sausage Pasta</span><span class="food-price">280 TK</span></div>
+                <div class="food-desc">(Chicken + Sausage + Vegetable + Secret Sauce)</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">39. BBQ Pasta</span><span class="food-price">299 TK</span></div>
+                <div class="food-desc">(BBQ Chicken + Vegetable + Other Ingredient)</div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>SOUP</h2>
+            <div class="size-header"><span>1:1</span><span>1:2</span><span>1:3</span></div>
+            <div class="food-item">
+                <div class="item-main">
+                    <span class="food-name">40. Special Thai Soup</span>
+                    <div class="size-prices"><span class="size-price">160TK</span><span class="size-price">300TK</span><span class="size-price">450TK</span></div>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="item-main">
+                    <span class="food-name">41. Thai Clear Soup</span>
+                    <div class="size-prices"><span class="size-price">---</span><span class="size-price">300TK</span><span class="size-price">350TK</span></div>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">42.Chicken Corn Soup</span><span class="food-price">350TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">43.Vegetable Soup</span><span class="food-price">300TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">44.Chef Special Soup</span><span class="food-price">600TK</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>CHOWMEIN</h2>
+            <div class="size-header"><span>1:2</span><span>1:3</span></div>
+            <div class="food-item">
+                <div class="item-main">
+                    <span class="food-name">45. Chicken Chowmein</span>
+                    <div class="size-prices"><span class="size-price">260TK</span><span class="size-price">350TK</span></div>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="item-main">
+                    <span class="food-name">46. Prawn Chowmein</span>
+                    <div class="size-prices"><span class="size-price">300TK</span><span class="size-price">380TK</span></div>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="item-main">
+                    <span class="food-name">47. Vegetable Chowmein</span>
+                    <div class="size-prices"><span class="size-price">220TK</span><span class="size-price">300TK</span></div>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="item-main">
+                    <span class="food-name">48. Hungry Town Special</span>
+                    <div class="size-prices"><span class="size-price">400TK</span><span class="size-price">500TK</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>PIZZA</h2>
+            <div class="size-header"><span>Small</span><span>Medium</span><span>Large</span></div>
+            <div class="food-item">
+                <div class="item-main">
+                    <span class="food-name">49. Chicken Pizza</span>
+                    <div class="size-prices"><span class="size-price">400TK</span><span class="size-price">480TK</span><span class="size-price">550TK</span></div>
+                </div>
+                <div class="food-desc">Chicken, Cheese, Onion, Capsicum</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main">
+                    <span class="food-name">50. Mexican Hot Pizza</span>
+                    <div class="size-prices"><span class="size-price">450TK</span><span class="size-price">500TK</span><span class="size-price">600TK</span></div>
+                </div>
+                <div class="food-desc">Beef, Cheese, Tomato, Onion, Green Chili, Capsicum</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main">
+                    <span class="food-name">51. Meat Delight</span>
+                    <div class="size-prices"><span class="size-price">550TK</span><span class="size-price">600TK</span><span class="size-price">700TK</span></div>
+                </div>
+                <div class="food-desc">Beef, Chicken, Cheese, Tomato, Capsicum, Black Olive</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main">
+                    <span class="food-name">52. 4 Season Pizza</span>
+                    <div class="size-prices"><span class="size-price">650TK</span><span class="size-price">700TK</span><span class="size-price">900TK</span></div>
+                </div>
+                <div class="food-desc">Chicken, Beef, Shrimp, Black Olive, Mushroom, Sausage, Capsicum</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main">
+                    <span class="food-name">53. BBQ Pizza</span>
+                    <div class="size-prices"><span class="size-price">450TK</span><span class="size-price">550TK</span><span class="size-price">650TK</span></div>
+                </div>
+                <div class="food-desc">BBQ Chicken, Cheese, Black Olive, Onion, Capsicum</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main">
+                    <span class="food-name">54. Cheese Pizza</span>
+                    <div class="size-prices"><span class="size-price">500TK</span><span class="size-price">580TK</span><span class="size-price">650TK</span></div>
+                </div>
+                <div class="food-desc">Mozzarella Cheese, Pizza Sauce, Oregano, Sausages</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main">
+                    <span class="food-name">55. Naga Extreme Pizza</span>
+                    <div class="size-prices"><span class="size-price">400TK</span><span class="size-price">500TK</span><span class="size-price">600TK</span></div>
+                </div>
+                <div class="food-desc">Chicken, Cheese, Capsicum, Tomato, Black Olive</div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>BIRIYANI & KHICHURI</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">56. Kacchi (Basmoti)</span><span class="food-price">300TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">57. Kacchi (Basmoti) Khadok</span><span class="food-price">350TK</span></div>
+                <div class="food-desc">(Salad + Chatni)</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">58. Chicken Roast</span><span class="food-price">150TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">59. Chicken Birani (Chinigura)</span><span class="food-price">250TK</span></div>
+                <div class="food-desc">(Chatni + Mix Salad)</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">60. Chicken Birani (Basmoti)</span><span class="food-price">300TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">61. Bucket Biriyani (1:2)</span><span class="food-price">700TK</span></div>
+                <div class="food-desc">Basmoti Rice + 4 pcs Grill Chicken + 2 pcs Jali Kabab</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">62. Chicken Khichuri</span><span class="food-price">240TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">63. Beef Khichuri</span><span class="food-price">270TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">64. Tandoori Khichuri</span><span class="food-price">300TK</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>SALAD</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">65. Chicken Cashewnut Salad</span><span class="food-price">420TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">66. Special Mix Salad</span><span class="food-price">150TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">67. Hungry Town Special Salad</span><span class="food-price">550TK</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>SIZZLING</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">68. Chicken Sizzling</span><span class="food-price">400TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">69. Beef Sizzling</span><span class="food-price">480TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">70. Special Sizzling</span><span class="food-price">500TK</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>MAIN DISH (1:3)</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">71. Thai Mixed Rice</span><span class="food-price">400TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">72. Chicken Fried Rice</span><span class="food-price">350TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">73. QPrawn Fried Rice</span><span class="food-price">380TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">74. Masala Fried Rice</span><span class="food-price">350TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">75. Hungry Town SP Fried Rice</span><span class="food-price">500TK</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>GRAVY DISHES (1:3)</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">76. Chicken Masala</span><span class="food-price">380TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">77. Chicken Chili Onion</span><span class="food-price">400TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">78. Beef Masala/ Vuna</span><span class="food-price">500TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">79. Beef Chili Onion</span><span class="food-price">450TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">80. Mutton Rezala</span><span class="food-price">600TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">81. Prawn Masala</span><span class="size-price">500TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">82. Rupchanda Fry</span><span class="food-price">600TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">83. Rupchanda Masala</span><span class="food-price">700TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">84. Coral Fry</span><span class="food-price">500TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">85. Coral B.B.Q</span><span class="food-price">700TK</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>VEGETABLE ITEM</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">86. Chicken Vegetable</span><span class="food-price">320TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">87. Thai Mixed Vegetable</span><span class="food-price">350TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">88. Hungry Town Vegetable</span><span class="food-price">400TK</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>COMBO PLATTER</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">89. Regular Chicken Fry</span><span class="food-price">180TK</span></div>
+                <div class="food-desc">Thai Chicken Fry 1pc + French Fry + Drinks</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">90. Special Chicken Fry</span><span class="food-price">260TK</span></div>
+                <div class="food-desc">Thai Chicken Fry 2pcs + French Fry + Drinks</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">91. Super Chicken Fry</span><span class="food-price">350TK</span></div>
+                <div class="food-desc">Thai Chicken Fry 3pcs + French Fry + Drinks</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">92. Hot Crispy Fried Chicken</span><span class="food-price">520TK</span></div>
+                <div class="food-desc">Chicken 4pcs + French Fry + Drinks 2</div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">93. Hot Crispy Fried Chicken</span><span class="food-price">999TK</span></div>
+                <div class="food-desc">Chicken 8pcs + French Fry + Drinks 4</div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>COUPLE PLATTER</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">94. Couple Platter (1)</span><span class="food-price">480TK</span></div>
+                <div class="food-desc">Egg Fried Rice (1:2) + Fried Chicken 2pcs + Hot & Spicy 2pcs + Masala Chicken 2 Cup + Chicken Sausage 2pcs + Sauce & Salad</div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>SHAKES & JUICE ITEM</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">95. Vanilla Milkshake</span><span class="food-price">150TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">96. Chocolate Milkshake</span><span class="food-price">150TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">97. Strawberry Milkshake</span><span class="food-price">180TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">98. Oreo Milkshake</span><span class="food-price">220TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">99. Banana Milkshake</span><span class="food-price">180TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">100. Mango Milkshake</span><span class="food-price">150TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">101. Lassi (Regular)</span><span class="food-price">100TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">102. Assi Flavor</span><span class="food-price">120TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">103. Special Lassi</span><span class="food-price">160TK</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>ADD ONS</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">104. Extra Cheese</span><span class="food-price">50TK</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">105. Extra Meyonise</span><span class="food-price">40TK</span></div>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <h2>DRINKS</h2>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">106. Coca Cola/Mojo</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">107. Pepsi/Maxcola</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">108. 7Up/Sprite/Clemon</span></div>
+            </div>
+            <div class="food-item">
+                <div class="item-main"><span class="food-name">109. Water</span></div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 40px; color: #555; background: #000; border-top: 1px solid #222;">
+        <p>© 2026 Hungry Town Restaurant. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

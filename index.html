@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hungry Town Restaurant | Pollibiddut</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <style>
+    /* Navigation Bar */
+    .navbar {
+        background: #000;
+        padding: 15px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #222;
+        position: sticky;
+        top: 0;
+        z-index: 1001;
+    }
+
+    .logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.2rem;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Hamburger / Collapse Icon */
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        color: #c5a059;
+        font-size: 1.8rem;
+        background: none;
+        border: none;
+    }
+
+    /* Sliding Menu Panel */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Hidden by default */
+        width: 70%;
+        height: 100vh;
+        background: #111;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: 0.4s ease;
+        z-index: 1000;
+        list-style: none;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+    }
+
+    .nav-links.active { right: 0; } /* Show menu */
+
+    .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-family: 'Poppins', sans-serif;
+        text-transform: uppercase;
+    }
+
+    .nav-links a:hover { color: #c5a059; }
+
+    /* Close Button inside menu */
+    .close-menu {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+        color: #c5a059;
+        cursor: pointer;
+    }
+
+    /* Fix background overlap */
+    html, body { overflow-x: hidden; width: 100%; margin: 0; }
+</style>
+
+  <nav class="navbar">
+        <a href="index.html" class="logo">HUNGRY <span>TOWN</span></a>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <span class="close-menu" onclick="toggleMenu()">×</span>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="offers.html" style="color: #c5a059;">Offers</a></li>
+            <li><a href="order.html">Your Order</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+<script>
+    function toggleMenu() {
+        const navLinks = document.getElementById('navLinks');
+        navLinks.classList.toggle('active');
+    }
+</script>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Hungry Town Restaurant</h1>
+            <p>Indian • Bangla • Chinese • Fast Food</p>
+            <div class="status-tag">Opens At 11 am • Closes At 11 PM</div>
+            <a href="https://maps.app.goo.gl/a2EZkP4AX6HkB86z7" target="_blank" class="btn-main">Get Directions</a>
+        </div>
+    </header>
+
+    <section id="offerings" class="menu-section">
+        <h2>Our Offerings</h2>
+
+        <div class="services-mini-bar">
+            <div class="s-item"><span class="icon">✓</span> No-contact delivery</div>
+            <div class="s-item"><span class="icon">✓</span> Takeaway</div>
+            <div class="s-item"><span class="icon">✓</span> Delivery in time</div>
+            <div class="s-item"><span class="icon">✓</span> Dine-in</div>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="offering-icon">🍲</div>
+                <h3>Halal Foods</h3>
+                <p>Strictly 100% Halal prepared Indian, Bangla, and Chinese dishes.</p>
+            </div>
+            <div class="menu-item">
+                <div class="offering-icon">🍷</div>
+                <h3>Private Dining Room</h3>
+                <p>Exclusive space available for parties, meetings, or family gatherings.</p>
+            </div>
+            <div class="menu-item">
+                <div class="offering-icon">⚡</div>
+                <h3>Quick Bite</h3>
+                <p>Fast and delicious meals for university students and busy professionals.</p>
+            </div>
+            <div class="menu-item">
+                <div class="offering-icon">🍽️</div>
+                <h3>Small Plates</h3>
+                <p>Perfect for sharing or trying multiple flavors in one sitting.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="highlights-section">
+        <div class="highlight-container">
+            <div class="highlights-flex">
+                <div class="h-list">
+                    <h3>Highlights</h3>
+                    <div class="highlight-box"><span class="gold-check">✓</span> <p>Great dessert options.</p></div>
+                    <div class="highlight-box"><span class="gold-check">✓</span> <p>Solo Dining & Groups.</p></div>
+                </div>
+                <div class="h-list">
+                    <h3>Accepted Payments</h3>
+                    <div class="highlight-box"><span class="gold-check">✓</span> <p>Credit & Debit cards</p></div>
+                    <div class="highlight-box"><span class="gold-check">✓</span> <p>NFC Mobile Payments</p></div>
+                    <div class="highlight-box"><span class="gold-check">✓</span> <p>Cash on delivery</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="info-section">
+        <div class="info-grid">
+            <div class="info-box">
+                <h3>Location</h3>
+                <p>Pollibiddut Bus Station,<br>Dhaka, Bangladesh</p>
+            </div>
+            <div class="info-box">
+                <h3>Contact</h3>
+                <p>Phone: 01403-038989</p>
+                <p>Email: hungrytown2025@gmail.com</p>
+            </div>
+            <div class="info-box">
+                <h3>Parking</h3>
+                <p>✓ Free multi-storey car park</p>
+                <p>✓ Free street parking</p>
+                <p>✓ Free parking lot / On-site</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Hungry Town Restaurant. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+

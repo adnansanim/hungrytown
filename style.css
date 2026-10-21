@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212;
+    color: #fff;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* Navbar */
+/* Update these parts in your CSS */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap; /* Prevents items from jumping to a new line */
+    padding: 15px 4%; /* Slightly tighter padding for more room */
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; /* Slightly smaller to ensure it fits on one line */
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    white-space: nowrap; /* Forces "HUNGRY TOWN" to stay in one line */
+    display: flex;
+    gap: 5px; /* Adds a small space between HUNGRY and TOWN */
+}
+
+/* Extra safety for very narrow phones */
+@media (max-width: 360px) {
+    .logo {
+        font-size: 0.95rem; /* Shrunk just a bit more for tiny screens */
+    }
+}
+.logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: bold; }
+.logo span { color: #c5a059; }
+.nav-links { list-style: none; display: flex; align-items: center; }
+.nav-links li { margin-left: 25px; }
+.nav-links a { text-decoration: none; color: #bbb; font-size: 0.9rem; transition: 0.3s; }
+.nav-links a:hover { color: #c5a059; }
+.btn-reserve { background: #c5a059; padding: 8px 18px; border-radius: 4px; color: #000 !important; font-weight: 600; }
+
+/* Hero Section */
+.hero {
+    height: 60vh;
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 10px; }
+.status-tag { color: #2ecc71; font-weight: bold; margin-bottom: 25px; font-size: 0.9rem; }
+.btn-main { text-decoration: none; color: #fff; border: 1px solid #c5a059; padding: 12px 35px; border-radius: 2px; }
+
+/* Offerings Section */
+.menu-section { padding: 80px 10%; text-align: center; }
+.menu-section h2 { font-family: 'Playfair Display', serif; color: #c5a059; margin-bottom: 40px; font-size: 2.5rem; }
+
+.services-mini-bar {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    flex-wrap: wrap;
+}
+
+.s-item { font-size: 0.9rem; color: #ddd; }
+.icon { color: #2ecc71; margin-right: 8px; font-weight: bold; }
+
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.menu-item { background: #1e1e1e; padding: 30px; border: 1px solid #2a2a2a; border-radius: 8px; transition: 0.3s; }
+.menu-item:hover { border-color: #c5a059; transform: translateY(-5px); }
+.offering-icon { font-size: 2rem; margin-bottom: 15px; display: block; }
+.menu-item h3 { color: #c5a059; margin-bottom: 10px; font-family: 'Playfair Display', serif; }
+.menu-item p { font-size: 0.85rem; color: #aaa; }
+
+/* Highlights & Payments */
+.highlights-section { padding: 60px 10%; background: #121212; border-top: 1px solid #222; }
+.highlight-container { max-width: 1000px; margin: 0 auto; }
+.highlights-flex { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.h-list { flex: 1; min-width: 300px; }
+.h-list h3 { font-size: 1.1rem; margin-bottom: 20px; color: #c5a059; border-bottom: 1px solid #333; padding-bottom: 5px; }
+.highlight-box { display: flex; align-items: center; margin-bottom: 12px; background: #1e1e1e; padding: 15px; border-radius: 4px; }
+.gold-check { color: #c5a059; margin-right: 15px; font-weight: bold; }
+
+/* Contact & Parking Grid */
+.info-section { padding: 60px 10%; text-align: center; background: #0a0a0a; }
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.info-box { padding: 30px; border: 1px solid #222; background: #161616; }
+.info-box h3 { color: #c5a059; margin-bottom: 15px; font-family: 'Playfair Display', serif; }
+.info-box p { font-size: 0.9rem; color: #bbb; margin-bottom: 5px; }
+
+footer { padding: 30px; background: #000; text-align: center; color: #555; font-size: 0.8rem; }ound: #000; text-align: center; color: #444; font-size: 0.8rem; }ng: 30px; background: #000; text-align: center; color: #444; font-size: 0.8rem; }
